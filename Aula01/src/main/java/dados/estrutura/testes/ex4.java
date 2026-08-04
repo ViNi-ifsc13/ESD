@@ -2,7 +2,7 @@ package dados.estrutura.testes;
 
 import dados.estrutura.VetorEstatico;
 
-public class ex2 {
+public class ex4 {
 
     static void main(){
 
@@ -14,10 +14,13 @@ public class ex2 {
         vetor.inserir("F");
         vetor.inserir(2,"W");
 
+        vetor.imprimir();
 
-        vetor.remover();
-        vetor.remover();
-        vetor.obterTamanho();
+        // Removendo
+        System.out.println("Removendo elemento C");
+        vetor.remover("C");
+
+        System.out.println("Removido");
         vetor.imprimir();
 
     }
