@@ -49,13 +49,24 @@ public class App {
                 agenda.buscarContato(nomeTel);
             }
             case 4 -> {
-//                String nomeTel = IO.readln("Insira o nome ou telefone do contato que deseja atualizar: ");
-//
-//                agenda.atualizarContato(nomeTel);
+                String nomeTel = IO.readln("Insira o nome ou telefone do contato que deseja atualizar: ");
+
+                String nome = IO.readln("Insira o novo nome: ");
+                String tel = IO.readln("Insira o novo telefone: ");
+
+                agenda.atualizarContato(nomeTel,nome,tel);
             }
             case 5 -> {agenda.listarContatos();}
-            case 6 -> {}
-            case 7 -> {}
+            case 6 -> {
+//                Contato variosContatos[] = IO.readln("Insira os novos contatos: ");
+//
+//                agenda.adicionarVariosContatos(variosContatos);
+            }
+            case 7 -> {
+                String prefixo = IO.readln("Insira o prefixo que desejar buscar: ");
+
+                agenda.buscarPrefixo(prefixo);
+            }
             case 8 -> {
                 System.out.println("Fechando agenda...");
             }

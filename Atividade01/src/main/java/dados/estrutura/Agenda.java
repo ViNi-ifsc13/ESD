@@ -82,15 +82,50 @@ public class Agenda {
         }
         System.out.println("Contato não encontrado!" + '\n');
     }
-// TODO fazer o atualizar contato
 
-//    public void atualizarContato(String nomeTel){
-//        for (int i = 0; i < tamanho; i++) {
-//            if (contatos[i].getNome().equals(nomeTel)){
-//
-//            }
-//        }
-//    }
+    public void atualizarContato(String nomeTel, String nome, String tel){
+        for (int i = 0; i < tamanho; i++) {
+            if (contatos[i].getNome().equals(nomeTel) || contatos[i].getTelefone().equals(nomeTel)){
+                for (int j = 0; j < tamanho; j++) {
+                    if (nome.equals(contatos[j].getNome())){
+                        System.out.println("Nome já cadastrado!" + '\n');
+                        nome = "";
+                        return;
+                    } else if (tel.equals(contatos[j].getTelefone())) {
+                        System.out.println("Telefone já cadastrado!" + '\n');
+                        tel = "";
+                        return;
+                    }
+                }
+
+                contatos[i].setNome(nome);
+                contatos[i].setTelefone(tel);
+                System.out.println("Contato atualizado com sucesso!");
+                return;
+            }
+        }
+
+        System.out.println("Atualização não concluída!");
+    }
+
+    public void adicionarVariosContatos(Contato[] arrayContatos){
+        for (int i = 0; i < arrayContatos.length; i++) {
+            addContato(arrayContatos[i]);
+        }
+
+    }
+
+    public void buscarPrefixo(String prefixo){
+        for (int i = 0; i < tamanho; i++) {
+            if (contatos[i].getNome().startsWith(prefixo)){
+                System.out.println(contatos[i].toString());
+            } else if (contatos[i].getTelefone().startsWith(prefixo)) {
+                System.out.println(contatos[i].toString());
+            }
+        }
+
+    }
+
 
 
 }
