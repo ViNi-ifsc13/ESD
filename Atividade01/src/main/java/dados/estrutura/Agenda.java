@@ -11,25 +11,32 @@ public class Agenda {
     }
 
     public void addContato(Contato contato){
+
+        String nome = contato.getNome();
+        String telefone = contato.getTelefone();
+
         for (int i = 0; i < tamanho; i++) {
-            if (contato.getNome().equals(contatos[i].getNome())){
-                System.out.println("Nome já cadastrado!");
+            if (nome.equals(contatos[i].getNome())){
+                System.out.println("Nome já cadastrado!" + '\n');
+                nome = "";
                 return;
-            } else if (contato.getEmail().equals(contatos[i].getEmail())){
-                System.out.println("Email já cadastrado!");
+            } else if (telefone.equals(contatos[i].getTelefone())){
+                System.out.println("Telefone já cadastrado!" + '\n');
+                telefone = "";
+                return;
             }
 
         }
         if (tamanho < contatos.length){
             contatos[tamanho] = contato;
             tamanho++;
-            System.out.println("Contato adicionado com sucesso!");
+            System.out.println("Contato adicionado com sucesso!" + '\n');
         } else  {
-            System.out.println("A agenda está cheia!");
+            System.out.println("A agenda está cheia!" + '\n');
         }
     }
 
-    public void removerContato(int indice){
+    public void removerContatoIndice(int indice){
         if (indice < 0 || indice >= tamanho) {
             System.out.println("Erro na agenda!");
             return;
@@ -41,24 +48,49 @@ public class Agenda {
         tamanho--;
     }
 
-    public void removerContatoNome(String nome){
+    public void removerContato(String nomeTel){
         for (int i = 0; i < tamanho; i++) {
-            if (contatos[i].equals(nome)){
-                removerContato(i);
+            if (contatos[i].getNome().equals(nomeTel)){
+                removerContatoIndice(i);
+                System.out.println("Contato removido com sucesso!" + '\n');
+                return;
+            } else if (contatos[i].getTelefone().equals(nomeTel)){
+                removerContatoIndice(i);
+                System.out.println("Contato removido com sucesso!" + '\n');
                 return;
             }
         }
+            System.out.println("Nome ou telefone inválidos!" + '\n');
+
     }
 
-    public void removerContatoTelefone(String telefone){
+    public void listarContatos(){
         for (int i = 0; i < tamanho; i++) {
-            if (contatos[i].equals(telefone)){
-                removerContato(i);
-                return;
-            }
-
+            System.out.printf(contatos[i].toString());
         }
     }
+
+    public void buscarContato(String nomeTel){
+        for (int i = 0; i < tamanho; i++) {
+            if (contatos[i].getNome().equals(nomeTel)){
+                System.out.println(contatos[i].toString());
+                return;
+            } else if (contatos[i].getTelefone().equals(nomeTel)) {
+                System.out.println(contatos[i].toString());
+                return;
+            }
+        }
+        System.out.println("Contato não encontrado!" + '\n');
+    }
+// TODO fazer o atualizar contato
+
+//    public void atualizarContato(String nomeTel){
+//        for (int i = 0; i < tamanho; i++) {
+//            if (contatos[i].getNome().equals(nomeTel)){
+//
+//            }
+//        }
+//    }
 
 
 }
