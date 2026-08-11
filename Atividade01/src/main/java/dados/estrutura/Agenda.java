@@ -83,6 +83,10 @@ public class Agenda {
         System.out.println("Contato não encontrado!" + '\n');
     }
 
+
+
+    // Evitar entrar com todas essas Strings, entrar com um Contato
+
     public void atualizarContato(String nomeTel, String nome, String tel){
         for (int i = 0; i < tamanho; i++) {
             if (contatos[i].getNome().equals(nomeTel) || contatos[i].getTelefone().equals(nomeTel)){
@@ -109,11 +113,13 @@ public class Agenda {
     }
 
     public void adicionarVariosContatos(Contato[] arrayContatos){
-        for (int i = 0; i < arrayContatos.length; i++) {
-            addContato(arrayContatos[i]);
+        for (Contato contato : arrayContatos) {
+            addContato(contato);
         }
 
     }
+
+    // Evitar retornar Strings, trocar "void" por "Contato[]" e retornar o próprio contato
 
     public void buscarPrefixo(String prefixo){
         for (int i = 0; i < tamanho; i++) {

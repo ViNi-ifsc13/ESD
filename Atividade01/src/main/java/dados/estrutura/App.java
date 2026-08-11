@@ -58,9 +58,17 @@ public class App {
             }
             case 5 -> {agenda.listarContatos();}
             case 6 -> {
-//                Contato variosContatos[] = IO.readln("Insira os novos contatos: ");
-//
-//                agenda.adicionarVariosContatos(variosContatos);
+                Contato variosContatos[] = {
+                        new Contato("Bola","123"),
+                        new Contato("Carro","1856858"),
+                        new Contato("Quadrado","17357"),
+                };
+
+                agenda.adicionarVariosContatos(variosContatos);
+                agenda.listarContatos();
+
+//                        IO.readln("Insira os novos contatos: ");
+
             }
             case 7 -> {
                 String prefixo = IO.readln("Insira o prefixo que desejar buscar: ");
