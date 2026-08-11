@@ -11,7 +11,7 @@ public class App {
 
     void menu(int opcao) {
 
-        Agenda agenda = new Agenda();
+        Agenda agenda = new Agenda(2);
 
         while (opcao != 8) {
             String hub = String.format("""

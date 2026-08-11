@@ -5,8 +5,8 @@ public class Agenda {
     private Contato[] contatos;
     private int tamanho;
 
-    public Agenda(){
-        contatos = new Contato[15];
+    public Agenda(int quantidade){
+        contatos = new Contato[quantidade];
         this.tamanho = 0;
     }
 
@@ -27,13 +27,20 @@ public class Agenda {
             }
 
         }
-        if (tamanho < contatos.length){
-            contatos[tamanho] = contato;
-            tamanho++;
-            System.out.println("Contato adicionado com sucesso!" + '\n');
-        } else  {
-            System.out.println("A agenda está cheia!" + '\n');
+        if (tamanho == contatos.length){
+            expandirAgenda();
         }
+
+        contatos[tamanho] = contato;
+        tamanho++;
+//        if (tamanho < contatos.length){
+//
+//            contatos[tamanho] = contato;
+//            tamanho++;
+//            System.out.println("Contato adicionado com sucesso!" + '\n');
+//        } else  {
+//            System.out.println("A agenda está cheia!" + '\n');
+//        }
     }
 
     public void removerContatoIndice(int indice){
@@ -46,6 +53,7 @@ public class Agenda {
         }
         contatos[tamanho-1] = null;
         tamanho--;
+        reduzirAgenda();
     }
 
     public void removerContato(String nomeTel){
@@ -130,6 +138,27 @@ public class Agenda {
             }
         }
 
+    }
+
+    // Depois da aula sobre vetor dinâmico
+
+    private void expandirAgenda(){
+        Contato[] novo = new Contato[this.contatos.length * 2];
+        for (int i = 0; i < this.contatos.length; i++){
+            novo[i] = this.contatos[i];
+        }
+        this.contatos = novo;
+    }
+
+    private void reduzirAgenda(){
+
+        if (tamanho <= contatos.length/4){
+            Contato[] novo =  new Contato[contatos.length/2];
+            for (int i = 0; i < tamanho; i++) {
+                novo[i] = contatos[i];
+            }
+            contatos = novo;
+        }
     }
 
 
